@@ -37,6 +37,10 @@ feedparser.on('readable', function() {
     , item;
 
   while (item = stream.read()) {
+    if (feed_items.length >= 10) {
+        return;
+    }
+
     feed_items.push({
         title: item.title,
         link: item.link
