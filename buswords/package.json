@@ -15,6 +15,7 @@
     "serve-favicon": "~2.3.0",
     "twitter": "latest",
     "feedparser": "latest",
-    "request": "latest"
+    "request": "latest",
+    "html-to-text": "latest"
   }
 }

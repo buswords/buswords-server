@@ -1,6 +1,7 @@
 var express = require('express');
 var FeedParser = require('feedparser');
 var request = require('request');
+var htmlToText = require('html-to-text');
 
 var router = express.Router();
 
@@ -38,7 +39,11 @@ feedparser.on('readable', function() {
   while (item = stream.read()) {
     feed_items.push({
         title: item.title,
-        description: item.description
+        description: htmlToText.fromString(item.description, {
+            ignoreHref: true,
+            ignoreImage: true
+        }),
+        html: item.description
     });
   }
 });
