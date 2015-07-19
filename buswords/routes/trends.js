@@ -22,6 +22,7 @@ router.get('/', function(req, res, next) {
           trend_names = trends.map(function (trend) {
               return (trend.name.match(/^#/)) ? trend.name : ('#' + trend.name);
           });
+      res.set('Access-Control-Allow-Origin', '*');
       res.json(trend_names);
   });
 });
