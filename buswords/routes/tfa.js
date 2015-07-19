@@ -5,7 +5,7 @@ var htmlToText = require('html-to-text');
 
 var router = express.Router();
 
-var req = request('http://feeds.feedburner.com/tokoulouri/rss'),
+var req = request('http://oasa.gr/news/el/anaknews.xml'),
     feedparser = new FeedParser();
 
 req.on('error', function (error) {
@@ -39,12 +39,7 @@ feedparser.on('readable', function() {
   while (item = stream.read()) {
     feed_items.push({
         title: item.title,
-        description: htmlToText.fromString(item.description, {
-            ignoreHref: true,
-            ignoreImage: true
-        }),
-        html: item.description,
-        link: item.origlink
+        link: item.link
     });
   }
 });
